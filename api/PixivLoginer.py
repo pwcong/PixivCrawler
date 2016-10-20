@@ -1,12 +1,13 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf8 -*-
 
 import urllib.request
 import http.cookiejar
 import urllib.parse
 import re
-import gzip
 import os.path
+import utils
+import getpass
 
 pixiv_url_login = "https://accounts.pixiv.net/login"
 pixiv_url_login_post = 'https://accounts.pixiv.net/api/login'
@@ -44,14 +45,6 @@ def getpostkey(body):
         return None
 
 
-def ungzip(data):
-    try:
-        data = gzip.decompress(data)
-    except Exception as e:
-        print(e)
-    return data
-
-
 def login(uid, pwd):
     op = getopener(headers)
 
@@ -60,7 +53,7 @@ def login(uid, pwd):
 
     data = op_key.read()
     op_key.close()
-    data = ungzip(data).decode()
+    data = utils.ungzip(data).decode()
 
     # 初始化登陆所需提交的数据
     pixiv_key = getpostkey(data)
@@ -89,7 +82,7 @@ if __name__ == '__main__':
     pixiv_url_login_test = 'http://i4.pixiv.net/img-original/img/2016/10/12/19/26/44/59432931_p0.jpg'
 
     userid = input("请输入用户名：")
-    password = input("请输入密码：")
+    password = getpass.getpass(prompt="请输入密码：")
     path = input("请输入测试图片保存文件夹路径：")
 
     # 登陆Pixiv
