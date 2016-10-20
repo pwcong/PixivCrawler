@@ -70,8 +70,6 @@ def download_illustration(op, no, picDir):
 
     items = analysis(html)
 
-    print(items)
-
     for item in items:
 
         try:
