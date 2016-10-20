@@ -1,12 +1,13 @@
 # !/usr/bin/env python3
 # -*- coding: utf8 -*-
 
-import PixivLoginer
-from bs4 import BeautifulSoup
-from enum import Enum
-import time
 import os
+import time
+from enum import Enum
 
+from bs4 import BeautifulSoup
+
+from Api import PixivLoginer
 
 pixiv_ranking_area_url = 'http://www.pixiv.net/ranking_area.php'
 query_type = 'detail'
