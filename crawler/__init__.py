@@ -34,6 +34,6 @@ class PixivItem(object):
         return {
             'title': self.title,
             'id': self.illust_id,
-            'author': self.illust_id,
+            'author': self.author,
             'date': self.date
         }
