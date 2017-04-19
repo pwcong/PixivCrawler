@@ -28,19 +28,20 @@ query_format = 'json'
 def analysis_html(html):
     items = []
     rootSoup = BeautifulSoup(html, 'lxml')
-    selector = rootSoup.select('#wrapper > div.layout-body > div > '
-                               'div.ranking-items-container > div.ranking-items.adjust > section')
-
+    
+    selector = rootSoup.select('#wrapper > div.layout-body > div > div.ranking-items-container > div.ranking-items.adjust > section.ranking-item')
+    
     for child in selector:
+
         linkUrl = child.select('div.ranking-image-item > a')[0]['href']
         illust_id = child['data-id']
         thumbnailUrl = child.select('div.ranking-image-item > a > div > img')[0]['data-src']
 
+        title = child['data-title']
         author = child['data-user-name']
         browse = child['data-view-count']
-        score = child['data-total-score']
+        score = child['data-rating-count']
         date = child['data-date']
-        title = child['data-title']
 
         originalUrl1 = thumbnailUrl.replace('c/240x480/img-master', 'img-original')
         originalUrl2 = thumbnailUrl.replace('c/240x480/img-master', 'c/1200x1200/img-master')
