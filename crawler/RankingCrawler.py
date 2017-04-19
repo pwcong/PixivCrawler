@@ -65,7 +65,7 @@ def analysis_json(js):
 
         author = child['user_name']
         browse = child['view_count']
-        score = child['total_score']
+        score = child['rating_count']
         date = child['date']
         title = child['title']
 
