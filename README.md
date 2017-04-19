@@ -10,5 +10,10 @@
 ## Run
 
 ```
+
+# before you start you must be sure that the lib bs4 and lxml had been installed. eg.
+# pip install beautifulsoup4
+# pip install lxml
+
 python3 main.py
 ```
